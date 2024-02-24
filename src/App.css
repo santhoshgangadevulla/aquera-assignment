@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+  max-width: 60%;
+  margin: 20px auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.planet-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.planet-card {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #3b3b3b;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.planet-card:hover {
+  transform: scale(1.02);
+}
+
+.resident-table {
+  margin-top: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+}
+
+
+.resident-list {
+  margin-top: 10px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+.pagination {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-top: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+
+#loader{
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+@keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  to { -webkit-transform: rotate(360deg); }
+}
+
+@media(max-width: 768px){
+  .app{
+    max-width: 90%;
   }
 }
+
+

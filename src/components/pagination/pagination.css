@@ -1,0 +1,10 @@
+.aa-pagination-button{
+    border: 2px solid #3b3b3b;
+    border-radius: 20px;
+    padding: 8px 16px;
+    transition: 300ms;
+}
+
+.aa-pagination-button:hover{
+    background-color: #3b3b3b;
+}
