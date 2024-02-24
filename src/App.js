@@ -41,7 +41,7 @@ const App = () => {
 
   return (
 	<div>
-		<div className="bg-[#1d1c1c] fixed top-0 left-0 w-full">
+		<div className="bg-[#1d1c1c] fixed top-0 left-0 w-full z-50">
 			<Header />
 		</div>
 		<h1 className="text-2xl text-white text-center font-ibm md:text-5xl my-12 mt-36 md:my-24 md:mt-44">Star Wars Planets Directory</h1>
