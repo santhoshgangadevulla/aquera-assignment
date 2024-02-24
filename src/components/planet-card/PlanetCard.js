@@ -21,6 +21,7 @@ const PlanetCard = ({ planet }) => {
                 <p className="font-medium text-base mb-0.5">Population - <span className="font-light text-sm">{planet.population}</span></p>
                 <p className="font-medium text-base mb-2">Terrain - <span className="font-light text-sm">{planet.terrain}</span></p>
                 <p className="text-sm font-light">{planet.name} is a planet with an {planet.climate} climate, characterized by its {planet.terrain} terrain. It has a population of {planet.population} inhabitants.</p>
+                <button href={toggleResidents} className="aa-view-btn text-sm font-medium mt-5">View Residents</button>
             </div>
         </div>
       {showResidents && (

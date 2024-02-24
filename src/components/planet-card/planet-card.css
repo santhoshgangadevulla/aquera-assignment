@@ -1,3 +1,14 @@
 .aa-planetName{
     font-family: "IBM Plex Mono", monospace;
 }
+.aa-view-btn{
+    border: 1px solid #ffffff;
+    border-radius: 20px;
+    padding: 8px 16px;
+    transition: 300ms;
+}
+
+.aa-view-btn:hover{
+    background-color: #ffffff;
+    color: #3b3b3b;
+}
