@@ -1,5 +1,5 @@
 import React from 'react';
-import './pagination.css'
+import './pagination.css';
 import '../../../src/App.css';
 
 const Pagination = ({ currentPage, totalPages, onPrevPage, onNextPage }) => {
@@ -9,7 +9,7 @@ const Pagination = ({ currentPage, totalPages, onPrevPage, onNextPage }) => {
         Previous
       </button>
       <span className="mr-2">{`Page ${currentPage} of ${totalPages}`}</span>
-      <button onClick={onNextPage} disabled={currentPage === totalPages} className="aa-pagination-button">
+      <button onClick={onNextPage} disabled={currentPage === totalPages || totalPages === 0} className="aa-pagination-button">
         Next
       </button>
     </div>
@@ -17,4 +17,3 @@ const Pagination = ({ currentPage, totalPages, onPrevPage, onNextPage }) => {
 };
 
 export default Pagination;
-

@@ -12,18 +12,27 @@ const App = () => {
   const entriesPerPage = 5;
 
   const fetchPlanets = useCallback(async () => {
-    try {
-      const response = await fetch(`https://swapi.dev/api/planets/?format=json`);
-      const data = await response.json();
-
-      setPlanets(data.results);
-      setTotalPages(Math.ceil(data.results.length / entriesPerPage));
+	try {
+	  const response = await fetch(`https://swapi.info/api/planets/?format=json`);
+	  if (!response.ok) {
+		throw new Error('Failed to fetch planets');
+	  }
+	  const data = await response.json();
+  
+	  if (!data || !Array.isArray(data)) {
+		throw new Error('Invalid data structure: data is not an array');
+	  }
+  
+	  setPlanets(data);
+	  setTotalPages(Math.ceil(data.length / entriesPerPage));
 	  setLoading(false);
-    } catch (error) {
-      console.error('Error fetching planets:', error);
+	} catch (error) {
+	  console.error('Error fetching planets:', error);
 	  setLoading(false);
-    }
+	}
   }, []);
+  
+  
 
   useEffect(() => {
     fetchPlanets();
@@ -37,7 +46,8 @@ const App = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
-  const paginatedPlanets = planets.slice((currentPage - 1) * entriesPerPage, currentPage * entriesPerPage);
+//   const paginatedPlanets = planets.slice((currentPage - 1) * entriesPerPage, currentPage * entriesPerPage);
+  const paginatedPlanets = planets ? planets.slice((currentPage - 1) * entriesPerPage, currentPage * entriesPerPage) : [];
 
   return (
 	<div>
@@ -46,25 +56,25 @@ const App = () => {
 		</div>
 		<h1 className="text-2xl text-white text-center font-ibm md:text-5xl my-12 mt-36 md:my-24 md:mt-44">Star Wars Planets Directory</h1>
 		<div className="app">
-			{loading ? (
-				<div className="w-full flex justify-center py-8">
-					<div id="loader"></div>
-				</div>
-			): (
-				<>
-					<div className="planet-container">
-						{paginatedPlanets.map((planet) => (
-						<PlanetCard key={planet.name} planet={planet} />
-						))}
-					</div>
-					<Pagination
-						currentPage={currentPage}
-						totalPages={totalPages}
-						onNextPage={handleNextPage}
-						onPrevPage={handlePrevPage}
-					/>
-				</>
-			)}
+		{loading ? (
+        <div className="w-full flex justify-center py-8">
+          <div id="loader"></div>
+        </div>
+      ) : (
+        <>
+          <div className="planet-container">
+            {paginatedPlanets.map((planet) => (
+              <PlanetCard key={planet.name} planet={planet} />
+            ))}
+          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onNextPage={handleNextPage}
+            onPrevPage={handlePrevPage}
+          />
+        </>
+      )}
 		</div>
 		
 	</div>
